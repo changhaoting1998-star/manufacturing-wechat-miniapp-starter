@@ -1,0 +1,16 @@
+page { background: #f5f7fb; color: #172033; font-size: 30rpx; }
+.page { padding: 32rpx; }
+.hero { padding: 40rpx; border-radius: 28rpx; background: linear-gradient(145deg, #18263f, #385a8c); color: white; box-shadow: 0 18rpx 50rpx rgba(24,38,63,.16); }
+.eyebrow { font-size: 24rpx; opacity: .72; }
+.title { display: block; margin-top: 12rpx; font-size: 44rpx; font-weight: 700; }
+.subtitle { display: block; margin-top: 16rpx; line-height: 1.6; opacity: .86; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20rpx; margin-top: 28rpx; }
+.card { padding: 28rpx; border-radius: 24rpx; background: white; box-shadow: 0 10rpx 34rpx rgba(25,44,76,.08); }
+.card-title { display: block; font-size: 32rpx; font-weight: 650; }
+.card-copy { display: block; margin-top: 10rpx; color: #667085; line-height: 1.5; }
+.section { margin-top: 30rpx; }
+.label { display: block; margin: 20rpx 0 10rpx; color: #475467; }
+.input { box-sizing: border-box; width: 100%; padding: 22rpx; border: 2rpx solid #d9e0ea; border-radius: 18rpx; background: white; }
+.button { margin-top: 24rpx; border-radius: 18rpx; background: #2f66b3; color: white; font-weight: 650; }
+.button.secondary { background: white; color: #2f66b3; border: 2rpx solid #b9ccea; }
+.status { margin-top: 22rpx; padding: 20rpx; border-radius: 18rpx; background: #edf4ff; color: #244d87; }

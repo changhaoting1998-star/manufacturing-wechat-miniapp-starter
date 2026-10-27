@@ -1,0 +1,4 @@
+{
+  "desc": "Synthetic starter sitemap",
+  "rules": [{ "action": "disallow", "page": "*" }]
+}

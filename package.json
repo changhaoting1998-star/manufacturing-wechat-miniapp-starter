@@ -1,0 +1,23 @@
+{
+  "name": "manufacturing-wechat-miniapp-starter",
+  "version": "0.1.0",
+  "description": "Privacy-first WeChat Mini Program starter for manufacturing employee self-service and auditable MES integration.",
+  "type": "commonjs",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "demo": "node examples/demo.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT",
+  "keywords": [
+    "wechat-mini-program",
+    "manufacturing",
+    "mes",
+    "cloudbase",
+    "attendance",
+    "local-first"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/access/access",
+    "pages/attendance/attendance",
+    "pages/payroll/payroll",
+    "pages/forms/forms"
+  ],
+  "window": {
+    "navigationBarTitleText": "员工自助",
+    "navigationBarBackgroundColor": "#f5f7fb",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f5f7fb"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "用于员工主动发起的单次考勤记录"
+    }
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

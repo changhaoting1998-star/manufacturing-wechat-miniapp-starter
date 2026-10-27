@@ -1,0 +1,12 @@
+<view class="page">
+  <view class="card">
+    <text class="card-title">本人考勤</text>
+    <text class="card-copy">位置只在你主动点击时获取。服务端始终以当前微信身份匹配员工。</text>
+    <text class="label">工作日期</text>
+    <picker mode="date" value="{{workDate}}" bindchange="dateChange"><view class="input">{{workDate}}</view></picker>
+    <button class="button secondary" bindtap="locate">主动获取当前位置</button>
+    <checkbox-group bindchange="consentChange"><label class="label"><checkbox value="location" checked="{{consent}}" />我同意本次考勤使用位置</label></checkbox-group>
+    <view class="grid"><button class="button" bindtap="clockIn">上班打卡</button><button class="button" bindtap="clockOut">下班打卡</button></view>
+    <view class="status" wx:if="{{status}}">{{status}}</view>
+  </view>
+</view>

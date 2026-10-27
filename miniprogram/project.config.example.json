@@ -1,0 +1,12 @@
+{
+  "description": "Synthetic manufacturing employee self-service starter",
+  "miniprogramRoot": "./",
+  "cloudfunctionRoot": "../cloudfunctions/",
+  "appid": "replace-with-your-own-appid",
+  "projectname": "manufacturing-wechat-miniapp-starter",
+  "setting": {
+    "es6": true,
+    "minified": true,
+    "urlCheck": true
+  }
+}

@@ -1,0 +1,13 @@
+<view class="page">
+  <view class="hero">
+    <text class="eyebrow">SYNTHETIC STARTER</text>
+    <text class="title">制造业员工自助</text>
+    <text class="subtitle">准入、考勤、工资确认和动态表单都经过服务端权限检查。</text>
+  </view>
+  <view class="grid">
+    <view class="card" wx:for="{{entries}}" wx:key="url" data-url="{{item.url}}" bindtap="open">
+      <text class="card-title">{{item.title}}</text>
+      <text class="card-copy">{{item.copy}}</text>
+    </view>
+  </view>
+</view>

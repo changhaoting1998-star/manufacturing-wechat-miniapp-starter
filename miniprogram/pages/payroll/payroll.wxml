@@ -1,0 +1,9 @@
+<view class="page">
+  <view class="card section" wx:for="{{items}}" wx:key="id">
+    <text class="card-title">{{item.periodType === 'month' ? '月工资' : '日工资'}} · {{item.periodKey}}</text>
+    <text class="card-copy">合成金额：{{item.amount}} {{item.currency}}</text>
+    <button class="button" wx:if="{{!item.acknowledgedAt}}" data-id="{{item.id}}" bindtap="acknowledge">本人确认</button>
+    <view class="status" wx:else>已确认</view>
+  </view>
+  <view class="status" wx:if="{{status}}">{{status}}</view>
+</view>
