@@ -1,7 +1,7 @@
 {
   "name": "manufacturing-wechat-miniapp-starter",
   "version": "0.1.0",
-  "description": "Privacy-first WeChat Mini Program starter for manufacturing employee self-service and auditable MES integration.",
+  "description": "WeChat shop-floor data collection layer for auditable MES integration and employee self-service.",
   "type": "commonjs",
   "main": "src/index.js",
   "scripts": {
@@ -18,6 +18,8 @@
     "mes",
     "cloudbase",
     "attendance",
+    "shop-floor-data",
+    "workforce-planning",
     "local-first"
   ]
 }

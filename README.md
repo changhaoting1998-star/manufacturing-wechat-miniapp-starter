@@ -3,7 +3,32 @@
 [![CI](https://github.com/changhaoting1998-star/manufacturing-wechat-miniapp-starter/actions/workflows/ci.yml/badge.svg)](https://github.com/changhaoting1998-star/manufacturing-wechat-miniapp-starter/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-A privacy-first, synthetic starter for manufacturing employee self-service in a native WeChat Mini Program.
+A privacy-first, synthetic starter that turns a familiar WeChat Mini Program into a low-friction shop-floor data channel for small and medium-sized manufacturers.
+
+## Why this matters
+
+Many frontline events are still reported on paper, in chat messages or after a shift. The delay makes production, quality and workforce records incomplete when managers need them. A Mini Program can collect structured data at the point of work without asking employees to install or learn another application, then return validated events to MES, payroll or factory administration systems.
+
+The intended production model always works with an MES. MES remains the system of record for work orders, processes, routing, equipment, production results and quality records. The Mini Program is the employee-facing collection and feedback layer: it receives authorized tasks from MES and sends verified shop-floor events back through an auditable adapter.
+
+This starter focuses on four practical outcomes:
+
+- capture production completion, material use, quality, abnormal events, work time and forms as close to the event as possible;
+- maintain an approved employee roster and auditable employment records;
+- deliver payroll statements to the correct employee and record acknowledgement safely;
+- compare each employee's demonstrated efficiency across processes to support training, shift planning and job assignment.
+
+```text
+MES work order / process master data
+                 ↓
+Frontline employee ↔ familiar Mini Program → validated shop-floor event → MES
+                              │
+                              └→ approved payroll / administration boundary
+                                                     ↓
+                                   process evidence and feedback loop
+```
+
+Process-efficiency analytics should support a manager's decision, not make an employment decision by itself. A production implementation should use comparable measurements, show the evidence and time window, allow correction or appeal, exclude protected or irrelevant personal attributes, and require human review before changes to assignment, pay or employment status.
 
 It demonstrates the parts that are easy to get wrong when a Mini Program connects to MES or factory administration systems:
 
@@ -66,6 +91,21 @@ Cloud gateway ── verified platform identity
 
 The client never submits the trusted platform subject identifier. A production adapter must derive it from the verified CloudBase execution context.
 
+## MES integration model
+
+This repository provides the boundary pattern; an operator supplies the adapter for its own MES.
+
+| Direction | Typical records | Owner |
+| --- | --- | --- |
+| MES → Mini Program | released work orders, operation definitions, allowed equipment, shift tasks and quality checkpoints | MES |
+| Mini Program → MES | start/finish events, quantity, scrap reason, process time, inspection result, abnormal event and attachment reference | MES after validation |
+| HR/payroll → Mini Program | approved employee binding and published payroll notice | HR/payroll system |
+| Mini Program → HR/payroll | acknowledgement, correction request and signature hash | HR/payroll system after validation |
+
+Every outbound MES event should include a stable idempotency key, source employee binding, work-order and operation references, device or station context, event time, payload hash and receipt. The adapter must reject unknown work orders, unauthorized operations, stale master-data versions and receipt hash mismatches. Failed or uncertain writes remain pending for safe retry instead of being counted twice.
+
+Efficiency comparisons should be calculated from MES-confirmed production events with comparable product, operation, equipment, shift and quality conditions. The result can suggest training or assignment options, but a manager should review the evidence and quality outcome before changing a person's job.
+
 ## Included workflows
 
 ### Employee access
@@ -115,7 +155,11 @@ node --test tests/*.test.js
 
 ## 中文说明
 
-本项目是制造业员工微信小程序的通用起步模板，示例数据全部为虚构数据。它重点演示员工准入、本人考勤、工资确认、动态表单和 MES 回执的安全边界，不包含任何真实企业的小程序标识、云环境、员工、工资、考勤、签名或部署资料。
+本项目面向中小制造业企业，将员工已经熟悉的微信小程序变成低门槛的一线数据入口。它需要配合 MES 使用，不替代 MES：MES 负责工单、工艺路线、设备、生产结果和质量记录等主数据与最终账本；小程序接收 MES 已授权的任务，并把员工在现场提交的报工、数量、工时、质量、异常和表单数据校验后回传 MES。
+
+项目还可以维护经过审核的员工档案，向本人发送工资单并记录确认结果；基于 MES 已确认的生产事件，在产品、工艺、设备、班次和质量条件可比时分析不同工艺效率，辅助培训、排班和岗位匹配。效率数据只应作为管理者的决策支持，不能单独决定调岗、薪资或去留。正式系统应提供人工复核、记录纠正与申诉机制，并排除与工作无关或受保护的个人属性。
+
+示例数据全部为虚构数据。项目重点演示员工准入、本人考勤、工资确认、动态表单和 MES 回执的安全边界，不包含任何真实企业的小程序标识、云环境、员工、工资、考勤、签名或部署资料。
 
 项目不是可直接上线的完整 MES。正式使用前必须接入企业自己的身份、权限、数据库、审计、加密、备份、数据保留和隐私告知制度。
 
